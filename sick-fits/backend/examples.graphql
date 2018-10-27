@@ -1,0 +1,19 @@
+query allItems {
+  items {
+    id
+    title
+  }
+}
+
+mutation createAnItem {
+  createItem(
+    title: "firstItem"
+    description: "firstItemDesc"
+    image: "test1.jpg"
+    largeImage: "test2.jpg"
+    price: 100
+  ) {
+    id
+    title
+  }
+}
