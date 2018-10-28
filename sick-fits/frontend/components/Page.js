@@ -8,7 +8,7 @@ const theme = {
   black: "#393939",
   grey: "#3A3A3A",
   white: "white",
-  lightgrey: "#E1E1E1",
+  lightGrey: "#E1E1E1",
   offWhite: "#EDEDED",
   maxWidth: "1000px",
   largeBreakPoint: "1300px",
