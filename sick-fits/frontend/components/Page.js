@@ -5,6 +5,10 @@ import Meta from "../components/Meta";
 
 const theme = {
   red: "#FF0000",
+  green1: "#059033",
+  green2: "#93CB56",
+  green3: "#7BAA47",
+  green4: "#355A30",
   black: "#393939",
   grey: "#3A3A3A",
   white: "white",
