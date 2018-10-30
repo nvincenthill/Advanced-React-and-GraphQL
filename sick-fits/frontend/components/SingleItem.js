@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
+import Head from "next/head";
 
 import Error from "./ErrorMessage";
 
@@ -13,6 +14,15 @@ const SingleItemStyles = styled.div`
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
   min-height: 800px;
+  img {
+    width: 100%
+    height: 100%;
+    object-fit: contain;
+  }
+  .details {
+    margin: 3rem;
+    font-size: 2rem;
+  }
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -37,7 +47,14 @@ class SingleItem extends Component {
           const { item } = data;
           return (
             <SingleItemStyles>
+              <Head>
+                <title> Nick's Store | {item.title}</title>
+              </Head>
               <img src={data.item.largeImage} alt={item.title} />
+              <div className="details">
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+              </div>
             </SingleItemStyles>
           );
         }}
