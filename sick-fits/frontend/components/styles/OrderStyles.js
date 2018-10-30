@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const OrderStyles = styled.div`
   max-width: 1000px;
@@ -6,7 +6,7 @@ const OrderStyles = styled.div`
   border: 1px solid ${props => props.theme.offWhite};
   box-shadow: ${props => props.theme.bs};
   padding: 2rem;
-  border-top: 10px solid red;
+  border-top: 10px solid ${props => props.theme.primaryColor};
   & > p {
     display: grid;
     grid-template-columns: 1fr 5fr;

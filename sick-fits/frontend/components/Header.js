@@ -22,7 +22,7 @@ const Logo = styled.h1`
   transform: skew(-7deg);
   a {
     padding: 0.5rem 1rem;
-    background: ${props => props.theme.red};
+    background: ${props => props.theme.primaryColor};
     color: ${props => props.theme.white};
     text-transform: uppercase;
     text-decoration: none;
@@ -35,7 +35,7 @@ const Logo = styled.h1`
 
 const StyledHeader = styled.div`
   .bar {
-    border-bottom: 10px solid ${props => props.theme.black};
+    border-bottom: 10px solid ${props => props.theme.primaryColor};
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
@@ -58,7 +58,7 @@ const Header = () => {
       <div className="bar">
         <Logo>
           <Link href="/">
-            <a>Nick's Store</a>
+            <a>Zen Skunk</a>
           </Link>
         </Logo>
 

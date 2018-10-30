@@ -4,11 +4,12 @@ import Header from "../components/Header";
 import Meta from "../components/Meta";
 
 const theme = {
-  red: "#FF0000",
-  green1: "#059033",
-  green2: "#93CB56",
-  green3: "#7BAA47",
-  green4: "#355A30",
+  primaryColor: "#355A30",
+  color2: "#059033",
+  color3: "#93CB56",
+  color4: "#7BAA47",
+  color5: "#355A30",
+  color6: "#008B00",
   black: "#393939",
   grey: "#3A3A3A",
   white: "white",
