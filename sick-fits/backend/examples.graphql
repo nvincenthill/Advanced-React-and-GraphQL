@@ -15,7 +15,6 @@ query oneItem {
 }
 
 # create an item
-
 mutation createAnItem {
   createItem(
     title: "second"
