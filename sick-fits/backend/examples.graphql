@@ -1,3 +1,4 @@
+# get all items
 query allItems {
   items {
     id
@@ -5,9 +6,19 @@ query allItems {
   }
 }
 
+# get an item
+query oneItem {
+  item(where: { id: "example" }) {
+    id
+    title
+  }
+}
+
+# create an item
+
 mutation createAnItem {
   createItem(
-    title: "firstItem"
+    title: "second"
     description: "firstItemDesc"
     image: "test1.jpg"
     largeImage: "test2.jpg"
