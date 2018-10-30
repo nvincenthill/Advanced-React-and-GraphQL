@@ -18,6 +18,9 @@ type Mutation {
 
   # update
   updateItem(id: ID!, title: String, description: String, price: Int): Item!
+
+  # delete
+  deleteItem(id: ID!): Item!
 }
 
 type Query {
