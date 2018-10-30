@@ -1,8 +1,51 @@
 import React, { Component } from "react";
+import { Mutation } from "react-apollo";
+import gql from "graphql-tag";
+
+import { ALL_ITEMS_QUERY } from "./Items";
+const DELETE_ITEM_MUTATION = gql`
+  mutation DELETE_ITEM_MUTATION($id: ID!) {
+    deleteItem(id: $id) {
+      id
+    }
+  }
+`;
 
 class DeleteItem extends Component {
+  update = (cache, payload) => {
+    const data = cache.readQuery({
+      query: ALL_ITEMS_QUERY
+    });
+    console.log(data);
+  };
+
   render() {
-    return <button>{this.props.children}</button>;
+    const { id } = this.props;
+    return (
+      <Mutation
+        mutation={DELETE_ITEM_MUTATION}
+        variables={{
+          id
+        }}
+        update={this.update}
+      >
+        {(deleteItem, { error }) => (
+          <button
+            onClick={() => {
+              if (
+                confirm(
+                  `Are you sure you want to delete item ${id} permanently?`
+                )
+              ) {
+                deleteItem();
+              }
+            }}
+          >
+            {this.props.children}
+          </button>
+        )}
+      </Mutation>
+    );
   }
 }
 
