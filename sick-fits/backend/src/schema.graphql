@@ -29,4 +29,7 @@ type Query {
 
   # get a single item
   item(where: ItemWhereUniqueInput!): Item
+
+  # get aggregate data about item set
+  itemsConnection(where: ItemWhereUniqueInput): ItemConnection!
 }
