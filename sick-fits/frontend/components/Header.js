@@ -64,12 +64,12 @@ const Header = () => {
 
         <Nav />
       </div>
-      <div className="sub-bar">
+      {/* <div className="sub-bar">
         <p>Search</p>
       </div>
       <div>
         <p>Cart</p>
-      </div>
+      </div> */}
     </StyledHeader>
   );
 };
