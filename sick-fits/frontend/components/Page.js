@@ -28,7 +28,7 @@ const StyledPage = styled.div`
 const Inner = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0 2rem;
 `;
 
 injectGlobal`
@@ -48,7 +48,7 @@ injectGlobal`
   }
 
   body {
-    padding: 0;
+    padding: 2rem 0;
     margin: 0;
     font-size: 1.5rem;
     line-height: 2;

@@ -50,6 +50,21 @@ const StyledHeader = styled.div`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid ${props => props.theme.lightgrey};
   }
+  .main-title-container {
+    background: ${props => props.theme.primaryColor};
+    margin: 0 auto;
+    width: 35vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .main-title {
+    font-size: 4.5rem;
+    line-height: 6rem;
+  }
+  .icon {
+    height: 8vh;
+  }
 `;
 
 const Header = () => {
@@ -58,7 +73,10 @@ const Header = () => {
       <div className="bar">
         <Logo>
           <Link href="/">
-            <a>Zen Skunk</a>
+            <div className="main-title-container">
+              <img src="../static/skunk.png" alt="skunk.png" className="icon" />
+              <a className="main-title">Zen Skunk</a>
+            </div>
           </Link>
         </Logo>
 
