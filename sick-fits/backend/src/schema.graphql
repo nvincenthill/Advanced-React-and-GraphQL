@@ -21,7 +21,12 @@ type Mutation {
 
 type Query {
   # get all items
-  items: [Item]!
+  items(
+    where: ItemWhereInput
+    orderBy: ItemOrderByInput
+    skip: Int
+    first: Int
+  ): [Item]!
 
   # get a single item
   item(where: ItemWhereUniqueInput!): Item
