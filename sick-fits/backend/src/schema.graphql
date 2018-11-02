@@ -1,7 +1,3 @@
-# type Dog {
-#   name: String!
-# }
-
 # prisma graphQL import :
 
 # import * from './generated/prisma.graphql'
