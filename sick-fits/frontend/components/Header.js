@@ -60,7 +60,7 @@ const StyledHeader = styled.div`
   }
   .main-title {
     font-size: 4.5rem;
-    line-height: 6rem;
+    line-height: 7rem;
   }
   .icon {
     height: 8vh;
@@ -74,8 +74,8 @@ const Header = () => {
         <Logo>
           <Link href="/">
             <div className="main-title-container">
-              <img src="../static/skunk.png" alt="skunk.png" className="icon" />
               <a className="main-title">Zen Skunk</a>
+              <img src="../static/skunk.png" alt="skunk.png" className="icon" />
             </div>
           </Link>
         </Logo>
