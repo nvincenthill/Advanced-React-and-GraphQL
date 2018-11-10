@@ -27,3 +27,17 @@ mutation createAnItem {
     title
   }
 }
+
+# create a user
+mutation createUser {
+  signUp(
+    name: "Nick Vincent-Hill"
+    email: "nvincenthill@gmail.com"
+    password: "password"
+  ) {
+    name
+    email
+    password
+    permissions
+  }
+}

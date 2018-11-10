@@ -1,13 +1,7 @@
+const bcrytpt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
 const Mutations = {
-  // example mutation
-
-  // createDog(parent, args, ctx, info) {
-  //   global.dogs = global.dogs || [];
-  //   const newDog = { name: args.name };
-  //   global.dogs.push(newDog);
-  //   return newDog;
-  // }
-
   async createItem(parent, args, ctx, info) {
     // TODO: check if user is authenticated
 
@@ -43,6 +37,30 @@ const Mutations = {
     const item = await ctx.db.query.item({ where }, `{ id, title }`);
     //TODO: check if they own it or if admin
     return ctx.db.mutation.deleteItem({ where }, info);
+  },
+
+  async signUp(parent, args, ctx, info) {
+    args.email = args.email.toLowerCase();
+    const password = await bcrytpt.hash(args.password, 10);
+    const user = await ctx.db.mutation.createUser(
+      {
+        data: {
+          ...args,
+          password,
+          permissions: {
+            set: ["USER"]
+          }
+        }
+      },
+      info
+    );
+    // create JWT token to sign user in
+    const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
+    ctx.response.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365 // One year cookie
+    });
+    return user;
   }
 };
 
