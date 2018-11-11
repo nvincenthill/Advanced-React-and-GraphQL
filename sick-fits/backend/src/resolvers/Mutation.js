@@ -1,5 +1,5 @@
-const bcrytpt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrytpt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
@@ -48,7 +48,7 @@ const Mutations = {
           ...args,
           password,
           permissions: {
-            set: ["USER"]
+            set: ['USER']
           }
         }
       },
@@ -56,7 +56,7 @@ const Mutations = {
     );
     // create JWT token to sign user in
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
-    ctx.response.cookie("token", token, {
+    ctx.response.cookie('token', token, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365 // One year cookie
     });
