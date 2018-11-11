@@ -23,16 +23,14 @@ type Mutation {
 
 type Query {
   # get all items
-  items(
-    where: ItemWhereInput
-    orderBy: ItemOrderByInput
-    skip: Int
-    first: Int
-  ): [Item]!
+  items(where: ItemWhereInput, orderBy: ItemOrderByInput, skip: Int, first: Int): [Item]!
 
   # get a single item
   item(where: ItemWhereUniqueInput!): Item
 
   # get aggregate data about item set
   itemsConnection(where: ItemWhereUniqueInput): ItemConnection!
+
+  # get current user
+  me: User
 }
