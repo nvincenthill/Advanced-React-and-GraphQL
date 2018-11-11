@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
-import router from "next/router";
+import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import router from 'next/router';
 
-import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Error from "./ErrorMessage";
-import Router from "next/router";
+import Form from './styles/Form';
+import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
+import Router from 'next/router';
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -30,36 +30,33 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
   state = {
-    title: "",
-    description: "",
-    image: "",
-    largeImage: "",
-    price: ""
+    title: '',
+    description: '',
+    image: '',
+    largeImage: '',
+    price: ''
   };
 
   // instance property with "this" access
   handleChange = e => {
     const { name, type, value } = e.target;
-    const val = type === "number" ? parseFloat(value) : value;
+    const val = type === 'number' ? parseFloat(value) : value;
 
     // handle multiple input boxes with the same function using computed property names
     this.setState({ [name]: val });
   };
 
   uploadFile = async e => {
-    console.log("uploading file...");
+    console.log('uploading file...');
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "nick-store");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'nick-store');
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dbs8kftkl/image/upload",
-      {
-        method: "POST",
-        body: data
-      }
-    );
+    const res = await fetch('https://api.cloudinary.com/v1_1/dbs8kftkl/image/upload', {
+      method: 'POST',
+      body: data
+    });
     const file = await res.json();
     this.setState({
       image: file.secure_url,
@@ -79,7 +76,7 @@ class CreateItem extends Component {
               const res = await createItem();
               // redirect to single item page
               Router.push({
-                pathname: "/item",
+                pathname: '/item',
                 query: { id: res.data.createItem.id }
               });
             }}
@@ -87,9 +84,7 @@ class CreateItem extends Component {
             <h2>Sell an item</h2>
             <Error error={error} />
             <fieldset disabled={loading} aria-busy={loading}>
-              {this.state.image && (
-                <img width="200" src={this.state.image} alt="Upload Preview" />
-              )}
+              {this.state.image && <img width="200" src={this.state.image} alt="Upload Preview" />}
               <label htmlFor="file">
                 Image
                 <input

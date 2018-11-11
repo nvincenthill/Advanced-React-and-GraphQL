@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
+import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 
-import Form from "./styles/Form";
-import Error from "./ErrorMessage";
+import Form from './styles/Form';
+import Error from './ErrorMessage';
 
-import { from } from "apollo-link";
+import { from } from 'apollo-link';
 class SignUp extends Component {
   render() {
     return (

@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import Link from "next/link";
-import Router from "next/router";
-import NProgress from "nprogress";
-import Nav from "../components/Nav";
+import styled from 'styled-components';
+import Link from 'next/link';
+import Router from 'next/router';
+import NProgress from 'nprogress';
+import Nav from '../components/Nav';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();

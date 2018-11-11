@@ -1,11 +1,11 @@
-import React from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import Head from "next/head";
-import Link from "next/link";
+import React from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import Head from 'next/head';
+import Link from 'next/link';
 
-import PaginationStyles from "./styles/PaginationStyles";
-import { perPage } from "../config";
+import PaginationStyles from './styles/PaginationStyles';
+import { perPage } from '../config';
 const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
     itemsConnection {
@@ -21,10 +21,10 @@ const Pagination = props => {
     <Query query={PAGINATION_QUERY}>
       {({ data, loading, error }) => {
         if (loading) {
-          return "Loading ... ";
+          return 'Loading ... ';
         }
         if (error) {
-          return "Error";
+          return 'Error';
         }
         const count = data.itemsConnection.aggregate.count;
         const numPages = Math.ceil(count / perPage);
@@ -37,7 +37,7 @@ const Pagination = props => {
             <Link
               prefetch
               href={{
-                pathname: "items",
+                pathname: 'items',
                 query: { page: props.page - 1 }
               }}
             >
@@ -50,7 +50,7 @@ const Pagination = props => {
             <Link
               prefetch
               href={{
-                pathname: "items",
+                pathname: 'items',
                 query: { page: props.page + 1 }
               }}
             >

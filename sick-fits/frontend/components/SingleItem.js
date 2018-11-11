@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import styled from "styled-components";
-import Head from "next/head";
+import React, { Component } from 'react';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import styled from 'styled-components';
+import Head from 'next/head';
 
-import Error from "./ErrorMessage";
+import Error from './ErrorMessage';
 
 const SingleItemStyles = styled.div`
   max-width: 1200px;

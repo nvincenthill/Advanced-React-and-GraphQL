@@ -1,7 +1,7 @@
-import App, { Container } from "next/app";
-import { ApolloProvider } from "react-apollo";
-import Page from "../components/Page";
-import withData from "../lib/withData";
+import App, { Container } from 'next/app';
+import { ApolloProvider } from 'react-apollo';
+import Page from '../components/Page';
+import withData from '../lib/withData';
 
 class MyApp extends App {
   // useful Next.js life-cycle method to get async data before render() is called

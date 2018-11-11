@@ -1,23 +1,23 @@
-import React from "react";
-import styled, { ThemeProvider, injectGlobal } from "styled-components";
-import Header from "../components/Header";
-import Meta from "../components/Meta";
+import React from 'react';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import Header from '../components/Header';
+import Meta from '../components/Meta';
 
 const theme = {
-  primaryColor: "#355A30",
-  color2: "#059033",
-  color3: "#93CB56",
-  color4: "#7BAA47",
-  color5: "#355A30",
-  color6: "#008B00",
-  black: "#393939",
-  grey: "#3A3A3A",
-  white: "white",
-  lightGrey: "#E1E1E1",
-  offWhite: "#EDEDED",
-  maxWidth: "1000px",
-  largeBreakPoint: "1300px",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)"
+  primaryColor: '#355A30',
+  color2: '#059033',
+  color3: '#93CB56',
+  color4: '#7BAA47',
+  color5: '#355A30',
+  color6: '#008B00',
+  black: '#393939',
+  grey: '#3A3A3A',
+  white: 'white',
+  lightGrey: '#E1E1E1',
+  offWhite: '#EDEDED',
+  maxWidth: '1000px',
+  largeBreakPoint: '1300px',
+  bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)'
 };
 
 const StyledPage = styled.div`

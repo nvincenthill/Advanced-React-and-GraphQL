@@ -1,4 +1,4 @@
-import Home from "./index";
+import Home from './index';
 
 // reuse page in Next.js
 export default Home;

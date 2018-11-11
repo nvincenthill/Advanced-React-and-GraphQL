@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Mutation, Query } from "react-apollo";
-import gql from "graphql-tag";
-import router from "next/router";
+import React, { Component } from 'react';
+import { Mutation, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import router from 'next/router';
 
-import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Error from "./ErrorMessage";
-import Router from "next/router";
+import Form from './styles/Form';
+import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
+import Router from 'next/router';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -20,18 +20,8 @@ const SINGLE_ITEM_QUERY = gql`
 `;
 
 const UPDATE_ITEM_MUTATION = gql`
-  mutation UPDATE_ITEM_MUTATION(
-    $id: ID!
-    $title: String
-    $description: String
-    $price: Int
-  ) {
-    updateItem(
-      id: $id
-      title: $title
-      description: $description
-      price: $price
-    ) {
+  mutation UPDATE_ITEM_MUTATION($id: ID!, $title: String, $description: String, $price: Int) {
+    updateItem(id: $id, title: $title, description: $description, price: $price) {
       id
       description
       title
@@ -46,7 +36,7 @@ class UpdateItem extends Component {
   // instance property with "this" access
   handleChange = e => {
     const { name, type, value } = e.target;
-    const val = type === "number" ? parseFloat(value) : value;
+    const val = type === 'number' ? parseFloat(value) : value;
 
     // handle multiple input boxes with the same function using computed property names
     this.setState({ [name]: val });
@@ -76,7 +66,7 @@ class UpdateItem extends Component {
             return (
               <p>
                 Item not found for ID
-                {" " + this.props.id}
+                {' ' + this.props.id}
               </p>
             );
           return (
@@ -123,7 +113,7 @@ class UpdateItem extends Component {
                     </label>
                     <button type="submit">
                       Sav
-                      {loading ? "ing" : "e"} Changes
+                      {loading ? 'ing' : 'e'} Changes
                     </button>
                   </fieldset>
                 </Form>
