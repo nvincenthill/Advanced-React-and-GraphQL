@@ -83,6 +83,10 @@ const Mutations = {
     });
     // return the user
     return user;
+  },
+  signOut(parent, args, ctx, info) {
+    ctx.response.clearCookie('token');
+    return { message: 'User signed out successfully' };
   }
 };
 
