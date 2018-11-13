@@ -63,7 +63,7 @@ const Mutations = {
     return user;
   },
 
-  async SignIn(parent, { email, password }, ctx, info) {
+  async signIn(parent, { email, password }, ctx, info) {
     // check if user exists
     const user = await ctx.db.query.user({ where: { email } });
     if (!user) {
