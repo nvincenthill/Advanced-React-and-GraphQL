@@ -40,6 +40,7 @@ const StyledHeader = styled.div`
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
+    margin-bottom: 2rem;
     @media (max-width: ${props => props.theme.largeBreakPoint}) {
       grid-template-columns: 1fr;
       justify-content: center;
