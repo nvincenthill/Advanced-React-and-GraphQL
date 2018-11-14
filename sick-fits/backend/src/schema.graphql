@@ -28,6 +28,9 @@ type Mutation {
 
   # sign out
   signOut: SuccessMessage
+
+  # reset user password
+  requestReset(email: String!): SuccessMessage
 }
 
 type Query {
@@ -42,4 +45,11 @@ type Query {
 
   # get current user
   me: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  permissions: [Permission!]!
 }

@@ -1,5 +1,7 @@
 const bcrytpt = require('bcryptjs');
+const { randomBytes } = require('crypto');
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
@@ -87,6 +89,24 @@ const Mutations = {
   signOut(parent, args, ctx, info) {
     ctx.response.clearCookie('token');
     return { message: 'User signed out successfully' };
+  },
+  async requestReset(parent, args, ctx, info) {
+    // check if user is real
+    const user = await ctx.db.query.user({ where: { email: args.email } });
+    if (!user) {
+      throw new Error(`No user found with email: ${args.email}`);
+    }
+    // set reset token and expiry for that user
+    const randomBytesPromisified = promisify(randomBytes);
+    const resetToken = (await randomBytesPromisified(20)).toString('hex');
+    const resetTokenExpiry = Date.now() + 3600000; // One hour from now
+    const res = await ctx.db.mutation.updateUser({
+      where: { email: args.email },
+      data: { resetToken, resetTokenExpiry }
+    });
+    console.log(res);
+    return { message: 'Password reset successful' };
+    // TODO: email user reset token
   }
 };
 
