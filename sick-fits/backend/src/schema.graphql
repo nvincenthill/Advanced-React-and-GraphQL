@@ -29,8 +29,11 @@ type Mutation {
   # sign out
   signOut: SuccessMessage
 
-  # reset user password
+  # request user password reset
   requestReset(email: String!): SuccessMessage
+
+  # reset user password
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 type Query {

@@ -107,6 +107,16 @@ const Mutations = {
     console.log(res);
     return { message: 'Password reset successful' };
     // TODO: email user reset token
+  },
+  async resetPassword(parent, args, ctx, info) {
+    //TODO: Check if the passwords match
+    //TODO: Check reset token
+    //TODO: Check if token is expired
+    //TODO: Hash new password
+    //TODO: Save new password and remove old reset token
+    //TODO: Generate JWT
+    //TODO: Set the JWT cookie
+    //TODO: Return the new user
   }
 };
 
