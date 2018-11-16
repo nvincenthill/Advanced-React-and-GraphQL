@@ -109,14 +109,35 @@ const Mutations = {
     // TODO: email user reset token
   },
   async resetPassword(parent, args, ctx, info) {
-    //TODO: Check if the passwords match
-    //TODO: Check reset token
-    //TODO: Check if token is expired
-    //TODO: Hash new password
-    //TODO: Save new password and remove old reset token
-    //TODO: Generate JWT
-    //TODO: Set the JWT cookie
-    //TODO: Return the new user
+    // check if the passwords match
+    if (args.password !== args.confirmPassword) {
+      throw new Error(`Invalid reset - provided passwords do not match`);
+    }
+    // check reset token and check if token is expired
+    const [user] = await ctx.db.query.users({
+      where: { resetToken: args.resetToken, resetTokenExpiry_gte: Date.now() - 3600000 }
+    });
+    if (!user) {
+      throw new Error(`Invalid reset - token expired or invalid`);
+    }
+    // hash new password
+    const password = await bcrytpt.hash(args.password, 10);
+    // save new password and remove old reset token
+    const updatedUser = await ctx.db.mutation.updateUser({
+      where: { email: user.email },
+      data: { password },
+      resetToken: null,
+      resetTokenExpiry: null
+    });
+    // generate new JWT
+    const token = JWT.sign({ userId: updatedUser.id }, process.env.APP_SECRET);
+    // set the JWT cookie
+    ctx.response.cookie('token', token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365 // One year cookie
+    });
+    // return the new user
+    return updatedUser;
   }
 };
 
