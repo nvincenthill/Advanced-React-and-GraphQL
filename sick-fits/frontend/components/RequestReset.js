@@ -12,7 +12,7 @@ const REQUEST_RESET_MUTATION = gql`
     }
   }
 `;
-class SignIn extends Component {
+class RequestReset extends Component {
   state = {
     email: ''
   };
@@ -60,4 +60,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default RequestReset;
