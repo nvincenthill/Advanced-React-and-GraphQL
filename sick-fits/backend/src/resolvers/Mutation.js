@@ -104,7 +104,6 @@ const Mutations = {
       where: { email: args.email },
       data: { resetToken, resetTokenExpiry }
     });
-    console.log(res);
     return { message: 'Password reset successful' };
     // TODO: email user reset token
   },
