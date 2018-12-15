@@ -3,6 +3,8 @@ const { randomBytes } = require('crypto');
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 
+const { transport, createEmail } = require('../mail');
+
 const Mutations = {
   async createItem(parent, args, ctx, info) {
     // TODO: check if user is authenticated
