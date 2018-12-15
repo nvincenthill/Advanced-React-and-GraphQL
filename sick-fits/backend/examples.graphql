@@ -30,14 +30,31 @@ mutation createAnItem {
 
 # create a user
 mutation createUser {
-  signUp(
-    name: "Nick Vincent-Hill"
-    email: "nvincenthill@gmail.com"
-    password: "password"
-  ) {
+  signUp(name: "Nick Vincent-Hill", email: "nvincenthill@gmail.com", password: "password") {
     name
     email
     password
     permissions
+  }
+}
+
+# requrest user password reset
+
+mutation requestReset {
+  requestReset(email: "nvincenthill@gmail.com") {
+    message
+  }
+}
+
+# reset user password
+
+mutation resetPassword {
+  resetPassword(
+    resetToken: "9884ede2423cb9353aaa709b39ae302059e07897"
+    password: "badpassword"
+    confirmPassword: "newpassword"
+  ) {
+    id
+    name
   }
 }

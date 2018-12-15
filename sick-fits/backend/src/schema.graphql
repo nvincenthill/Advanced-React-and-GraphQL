@@ -1,5 +1,8 @@
 # prisma graphQL import :
 # import * from './generated/prisma.graphql'
+type SuccessMessage {
+  message: String!
+}
 
 type Mutation {
   # create item
@@ -19,6 +22,18 @@ type Mutation {
 
   # create user
   signUp(email: String!, password: String!, name: String!): User!
+
+  # sign in a user
+  signIn(email: String!, password: String!): User!
+
+  # sign out
+  signOut: SuccessMessage
+
+  # request user password reset
+  requestReset(email: String!): SuccessMessage
+
+  # reset user password
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!): User!
 }
 
 type Query {
@@ -33,4 +48,11 @@ type Query {
 
   # get current user
   me: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  permissions: [Permission!]!
 }
