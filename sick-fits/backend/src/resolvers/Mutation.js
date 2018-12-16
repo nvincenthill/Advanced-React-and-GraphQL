@@ -106,8 +106,20 @@ const Mutations = {
       where: { email: args.email },
       data: { resetToken, resetTokenExpiry }
     });
+    //TODO: create burner email address
+    const senderEmailAddress = 'example@gmail.com';
+    //TODO: Add error handling on email response
+    const mailResponse = await transport.sendMail({
+      from: senderEmailAddress,
+      to: user.email,
+      subject: 'Password reset token',
+      html: createEmail(
+        `Your password reset token is \n\n <a href="${
+          process.env.FRONTEND_URL
+        }/reset?resetToken=${resetToken}">Click here to reset password</a>`
+      )
+    });
     return { message: 'Password reset successful' };
-    // TODO: email user reset token
   },
   async resetPassword(parent, args, ctx, info) {
     // check if the passwords match
